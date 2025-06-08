@@ -18,7 +18,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hashed_pw = generate_password_hash(password, method='sha256')
+        hashed_pw = generate_password_hash(password, method='pbkdf2:sha256')
         if User.query.filter_by(username=username).first():
             flash('Username already exists')
             return redirect(url_for('register'))
