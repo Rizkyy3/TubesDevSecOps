@@ -25,9 +25,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Bandit Security Scan
-      uses: tj-actions/bandit@v3
-      with:
-        options: "-r ."
+      run: |
+        pip install bandit
+        bandit -r app/ -ll
 
     - name: Run Basic Test (Flask App)
       run: |
